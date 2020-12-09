@@ -31,11 +31,15 @@ function App() {
       <header className="ritual-header">
         Essential Nutrients
       </header>
-      <Ingredients ingredients={data} />
 
       <Switch>
-        <Route path="/products">
-          <Ingredients />
+        {/* needed to have a route path */}
+        <Route exact path="/">
+            <Link to="/products">Products</Link>
+        </Route>
+        <Route  path="/products">
+          {/* needed to pass in the ingredients you had it twice */}
+          <Ingredients ingredients={data}/>
         </Route>
       </Switch>
 

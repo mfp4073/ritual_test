@@ -9,7 +9,7 @@ const Ingredients = (props) => {
   const linkList = props.ingredients.map((ingredient) => {
     return (
       <li key={ingredient.id}>
-        <Link to={`http://localhost/${ingredient.id}`}>{ingredient.name}</Link>
+        <Link to={`${url}/${ingredient.id}`}>{ingredient.name}</Link>
       </li>
     );
   });
