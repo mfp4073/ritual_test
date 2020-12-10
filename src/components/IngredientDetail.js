@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const Ingredient = ({ data }) => {
+const IngredientDetail = ({ data }) => {
   const { ingredientId } = useParams();
   const ingredient = data.find((p) => p.id === Number(ingredientId));
   let ingredientData;
@@ -34,4 +34,4 @@ const Ingredient = ({ data }) => {
   );
 };
 
-export default Ingredient;
+export default IngredientDetail;

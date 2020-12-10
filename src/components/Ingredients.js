@@ -1,16 +1,13 @@
 import React from "react";
 import { Link, Route, useRouteMatch } from "react-router-dom";
-import Ingredient from './Ingredient'
+import IngredientDetail from './IngredientDetail'
+import IngredientCard from './IngredientCard'
 
 const Ingredients = (props) => {
   const { url } = useRouteMatch();
-  console.log("P2: ", props.ingredients)
-
   const linkList = props.ingredients.map((ingredient) => {
     return (
-      <li key={ingredient.id}>
-        <Link to={`${url}/${ingredient.id}`}>{ingredient.name}</Link>
-      </li>
+      <IngredientCard ingredient={ingredient} url={url} />
     );
   });
 
@@ -26,7 +23,6 @@ const Ingredients = (props) => {
             marginLeft: "auto"
           }}
         >
-          <h3>Ingredients</h3>
           <ul style={{ listStyleType: "none", padding: 0, fontSize: "15px" }}>
             {linkList}
           </ul>
@@ -34,7 +30,7 @@ const Ingredients = (props) => {
       </div>
 
       <Route path={`${url}/:ingredientId`}>
-        <Ingredient data={props.ingredients} />
+        <IngredientDetail data={props.ingredients} />
       </Route>
       <Route exact path={url}>
         <p style={{ textAlign: "center" }}>Please select a ingredient.</p>

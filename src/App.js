@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Ingredients from './components/Ingredients'
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect} from "react-router-dom";
 import './App.css';
 
 function App() {
@@ -23,26 +23,22 @@ function App() {
         setData(myJson)
       });
   }
+
   useEffect(() => {
     getData()
   }, [])
+
   return (
     <div className="App">
       <header className="ritual-header">
-        Essential Nutrients
+        <h1>Essential Nutrients</h1>
       </header>
-
       <Switch>
-        {/* needed to have a route path */}
-        <Route exact path="/">
-            <Link to="/products">Products</Link>
-        </Route>
-        <Route  path="/products">
-          {/* needed to pass in the ingredients you had it twice */}
+        <Route path="/ingredients">
           <Ingredients ingredients={data}/>
         </Route>
+        <Redirect from="/" to="/ingredients" exact />
       </Switch>
-
     </div>
   );
 }
